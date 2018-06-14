@@ -1,0 +1,33 @@
+{
+  "name": "ludolf-lesson-01-01",
+  "version": "1.0.0",
+  "description": "Lesson One-One - Meet the Ludolf",
+  "private": true,
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ludolf/lesson-01-01.git"
+  },
+  "keywords": [
+    "ludolf",
+    "learning",
+    "kids"
+  ],
+  "author": "Tomas Tulka",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ludolf/lesson-01-01/issues"
+  },
+  "homepage": "https://github.com/ludolf/lesson-01-01#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "style-loader": "^0.21.0"
+  },
+  "dependencies": {
+    "ludolfs-web-editor": "^1.0.0"
+  }
+}
