@@ -32,10 +32,14 @@ module.exports = {
              'dist'
          ]),
          new CopyWebpackPlugin([{
-                from: 'resources/*',
+                from: 'resources/index.html',
                 to: path.resolve(__dirname, 'dist'),
                 flatten: true
              }, {
+                from: 'resources/TweenMax.min.js',
+                to: path.resolve(__dirname, 'dist/js'),
+                flatten: true
+             },{
                 from: 'node_modules/ludolfs-web-editor/dist/js/jseditor.js',
                 to: path.resolve(__dirname, 'dist/js'),
                 flatten: true

@@ -1,8 +1,10 @@
 {
   "en": {
-    "title": "Ludolf's Lesson 01-01: Meet the Ludolf"
+      "title": "Ludolf's Lesson 01-01: Meet the Ludolf",
+      "help": "<b>terminal.print(\"your text!\");</b> -- print to the terminal<br>"
   },
   "de": {
-    "title": "Ludolfs Lektion 01-01: Kenne den Ludolf lernen"
+      "title": "Ludolfs Lektion 01-01: Kenne den Ludolf lernen",
+      "help": "<b>terminal.print(\"Deiner Text!\");</b> -- in den Terminal ausdrucken<br>"
   }
 }
