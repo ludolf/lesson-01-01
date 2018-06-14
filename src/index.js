@@ -1,17 +1,17 @@
 import './style.css';
 import MessagesData from './messages.json';
+import LudolfImg from './ludolf.svg';
 
 import $ from 'jquery-slim';
 
-import {live} from './ludolf';
+import {live, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown} from './ludolf';
 
 const Messages = new terminal.JsEditorMessages(MessagesData);
 
 $(function () {
+
     document.title = Messages.msg('title');
     $('#helpDiv').html(Messages.msg('help'));
-
-    $('#ludolf_ludolf').appendTo('#workspace').show();
 
 //    var tl_blinking = new TimelineMax({repeat:-1, repeatDelay:0.2, paused:true})
 //      .to('#ludolf_light', 0.2, {fill:blink})
@@ -26,9 +26,14 @@ $(function () {
 //      .add(rightLegDown, 2)
 //      .add(leftLegUp, 0)
 //      .add(leftLegDown, 1);
-    
-    live();
-
-    //tl_blinking.resume();
-    //tl_dance.resume();
+//
+//    tl_blinking.resume();
+//    tl_dance.resume();
 });
+
+function show() {
+    $('#workspace').html(LudolfImg);
+    live();
+}
+
+export { show, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown };

@@ -4,10 +4,14 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
-    entry: './src/index.js',
+    entry: {
+        index: './src/index.js'
+    },
     output: {
         filename: 'index.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'var',
+        library: 'ludolf'
     },
     module: {
         rules: [ {
@@ -18,9 +22,12 @@ module.exports = {
                 ]
             }, {
                 test: /\.svg$/,
-                use: [
-                    'file-loader'
-                ]
+                use: [{
+                    loader: 'svg-inline-loader',
+                    options: {
+                        removeSVGTagAttrs: false
+                    }
+                }]
             }
         ]
     },

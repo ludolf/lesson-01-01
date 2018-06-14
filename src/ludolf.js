@@ -1,12 +1,10 @@
 const origWidth = 322;
 const origHeight = 372;
 
-const ratio = document.getElementById('ludolf_ludolf').width.baseVal.value / origWidth;
-
-TweenMax.set('#ludolf_robot', {scaleY:ratio, scaleX:ratio});
-
 const black = '#434343';
 const blink = '#00ff00';
+
+var ratio = 1;
 
 export const rightHandUp = function () {
   TweenMax.to('#ludolf_arm_right', 1, {scaleY:-1, y:50*ratio});
@@ -44,7 +42,15 @@ export const leftLegDown = function () {
   TweenMax.to('#ludolf_leg_left', 1, {y:0});
 }
 
+var liveTimer;
+var buttonsSet = false;
+
 export const live = function () {
+  clearTimeout(liveTimer);
+
+  ratio = document.getElementById('ludolf_ludolf').width.baseVal.value / origWidth;
+
+  TweenMax.set('#ludolf_robot', {scaleY:ratio, scaleX:ratio});
 
   function eyelight() {
     var repeat = Math.round(Math.random());
@@ -73,10 +79,13 @@ export const live = function () {
   }
 
   function buttons() {
-    var yellow1 = '#ffe599';
-    var yellow2 = '#e0c988';
-    var red1 = '#cc5858';
-    var red2 = '#ac5858';
+    if (buttonsSet) return;
+    buttonsSet = true;
+
+    const yellow1 = '#ffe599';
+    const yellow2 = '#e0c988';
+    const red1 = '#cc5858';
+    const red2 = '#ac5858';
 
     function changeColor1a() {
       TweenMax.to('#ludolf_button_square', 0.5, {fill:red1});
@@ -126,12 +135,12 @@ export const live = function () {
       .to('#ludolf_body', 0.5, {y:0, rotation:0});
   }
 
-  var motions = [body, eyelight, nose, eyebrow, eyebrow];
+  const motions = [body, eyelight, nose, eyebrow, eyebrow];
 
   (function _live() {
       var next = Math.floor(Math.random() * motions.length);
       motions[next]();
-      setTimeout(_live, Math.floor((Math.random() * 3) + 2) * 1000);
+      liveTimer = setTimeout(_live, Math.floor((Math.random() * 3) + 2) * 1000);
   })();
   buttons();
 }
