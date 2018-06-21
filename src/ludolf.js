@@ -1,45 +1,72 @@
 const origWidth = 322;
 const origHeight = 372;
 
-const black = '#434343';
-const blink = '#00ff00';
+const blackColor = '#434343';
+const blinkColor = '#00ff00';
 
 var ratio = 1;
 
+const timeline = new TimelineLite();
+
 export const rightHandUp = function () {
-  TweenMax.to('#ludolf_arm_right', 1, {scaleY:-1, y:50*ratio});
-  TweenMax.to('#ludolf_hand_right', 1, {y:-200*ratio});
+  timeline.add([
+    TweenMax.to('#ludolf_arm_right', 1, {scaleY:-1, y:50*ratio}),
+    TweenMax.to('#ludolf_hand_right', 1, {y:-200*ratio})
+  ]);
 }
 
 export const rightHandDown = function () {
-  TweenMax.to('#ludolf_arm_right', 1, {scaleY:1, y:0});
-  TweenMax.to('#ludolf_hand_right', 1, {y:0});
+  timeline.add([
+    TweenMax.to('#ludolf_arm_right', 1, {scaleY:1, y:0}),
+    TweenMax.to('#ludolf_hand_right', 1, {y:0})
+  ]);
 }
 
 export const leftHandUp = function () {
-  TweenMax.to('#ludolf_arm_left', 1, {scaleY:-1, y:50*ratio});
-  TweenMax.to('#ludolf_hand_left', 1, {y:-200*ratio});
+  timeline.add([
+    TweenMax.to('#ludolf_arm_left', 1, {scaleY:-1, y:50*ratio}),
+    TweenMax.to('#ludolf_hand_left', 1, {y:-200*ratio})
+  ]);
 }
 
 export const leftHandDown = function () {
-  TweenMax.to('#ludolf_arm_left', 1, {scaleY:1, y:0});
-  TweenMax.to('#ludolf_hand_left', 1, {y:0});
+  timeline.add([
+    TweenMax.to('#ludolf_arm_left', 1, {scaleY:1, y:0}),
+    TweenMax.to('#ludolf_hand_left', 1, {y:0})
+  ]);
 }
 
 export const rightLegUp = function () {
-  TweenMax.to('#ludolf_leg_right', 1, {y:-15*ratio});
+  timeline.add([
+    TweenMax.to('#ludolf_leg_right', 1, {y:-15*ratio})
+  ]);
 }
 
 export const rightLegDown = function () {
-  TweenMax.to('#ludolf_leg_right', 1, {y:0});
+  timeline.add([
+    TweenMax.to('#ludolf_leg_right', 1, {y:0})
+  ]);
 }
 
 export const leftLegUp = function () {
-  TweenMax.to('#ludolf_leg_left', 1, {y:-15*ratio});
+  timeline.add([
+    TweenMax.to('#ludolf_leg_left', 1, {y:-15*ratio})
+  ]);
 }
 
 export const leftLegDown = function () {
-  TweenMax.to('#ludolf_leg_left', 1, {y:0});
+  timeline.add([
+    TweenMax.to('#ludolf_leg_left', 1, {y:0})
+  ]);
+}
+
+export const blink = function () {
+  timeline.add([
+    TweenMax.to('#ludolf_light', 1, {fill:blinkColor})
+  ]);
+  timeline.add([
+    TweenMax.to('#ludolf_light', 1, {fill:blackColor})
+  ]);
 }
 
 var liveTimer;

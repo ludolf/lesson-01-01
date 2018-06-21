@@ -4,7 +4,7 @@ import LudolfImg from './ludolf.svg';
 
 import $ from 'jquery-slim';
 
-import {live, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown} from './ludolf';
+import {live, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink} from './ludolf';
 
 const Messages = new terminal.JsEditorMessages(MessagesData);
 
@@ -36,4 +36,4 @@ function show() {
     live();
 }
 
-export { show, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown };
+export { show, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink };
