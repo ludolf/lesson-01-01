@@ -7,55 +7,57 @@ const blinkColor = '#00ff00';
 var ratio = 1;
 
 const timeline = new TimelineLite();
+const handsTL = new TimelineLite();
+const legsTL = new TimelineLite();
 
 export const rightHandUp = function () {
-  timeline.add([
+  handsTL.add([
     TweenMax.to('#ludolf_arm_right', 1, {scaleY:-1, y:50*ratio}),
     TweenMax.to('#ludolf_hand_right', 1, {y:-200*ratio})
   ]);
 }
 
 export const rightHandDown = function () {
-  timeline.add([
+  handsTL.add([
     TweenMax.to('#ludolf_arm_right', 1, {scaleY:1, y:0}),
     TweenMax.to('#ludolf_hand_right', 1, {y:0})
   ]);
 }
 
 export const leftHandUp = function () {
-  timeline.add([
+  handsTL.add([
     TweenMax.to('#ludolf_arm_left', 1, {scaleY:-1, y:50*ratio}),
     TweenMax.to('#ludolf_hand_left', 1, {y:-200*ratio})
   ]);
 }
 
 export const leftHandDown = function () {
-  timeline.add([
+  handsTL.add([
     TweenMax.to('#ludolf_arm_left', 1, {scaleY:1, y:0}),
     TweenMax.to('#ludolf_hand_left', 1, {y:0})
   ]);
 }
 
 export const rightLegUp = function () {
-  timeline.add([
+  legsTL.add([
     TweenMax.to('#ludolf_leg_right', 1, {y:-15*ratio})
   ]);
 }
 
 export const rightLegDown = function () {
-  timeline.add([
+  legsTL.add([
     TweenMax.to('#ludolf_leg_right', 1, {y:0})
   ]);
 }
 
 export const leftLegUp = function () {
-  timeline.add([
+  legsTL.add([
     TweenMax.to('#ludolf_leg_left', 1, {y:-15*ratio})
   ]);
 }
 
 export const leftLegDown = function () {
-  timeline.add([
+  legsTL.add([
     TweenMax.to('#ludolf_leg_left', 1, {y:0})
   ]);
 }
