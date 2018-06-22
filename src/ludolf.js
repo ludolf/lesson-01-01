@@ -6,9 +6,9 @@ const blinkColor = '#00ff00';
 
 var ratio = 1;
 
-const timeline = new TimelineLite();
-const handsTL = new TimelineLite();
-const legsTL = new TimelineLite();
+var timeline = new TimelineLite({paused:true});
+var handsTL = new TimelineLite({paused:true});
+var legsTL = new TimelineLite({paused:true});
 
 export const rightHandUp = function () {
   handsTL.add([
@@ -172,4 +172,16 @@ export const live = function () {
       liveTimer = setTimeout(_live, Math.floor((Math.random() * 3) + 2) * 1000);
   })();
   buttons();
+}
+
+export const pause = function () {
+  timeline = new TimelineLite({paused:true});
+  handsTL = new TimelineLite({paused:true});
+  legsTL = new TimelineLite({paused:true});
+}
+
+export const resume = function () {
+  timeline.resume();
+  handsTL.resume();
+  legsTL.resume();
 }

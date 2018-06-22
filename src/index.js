@@ -4,7 +4,7 @@ import LudolfImg from './ludolf.svg';
 
 import $ from 'jquery-slim';
 
-import {live, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink} from './ludolf';
+import {live, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink, pause, resume} from './ludolf';
 
 const Messages = new terminal.JsEditorMessages(MessagesData);
 
@@ -33,7 +33,16 @@ $(function () {
 
 function show() {
     $('#workspace').html(LudolfImg);
+    $('#ludolf_ludolf').show();
+    pause();
+    new TimelineMax().to('#ludolf_ludolf', 2, {opacity: 1})
+
+    setTimeout(start, 1500);
+}
+
+function start() {
     live();
+    resume();
 }
 
 export { show, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink };
