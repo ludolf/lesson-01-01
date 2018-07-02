@@ -4,7 +4,7 @@ import LudolfImg from './ludolf.svg';
 
 import $ from 'jquery-slim';
 
-import {live, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink, pause, resume} from './ludolf';
+import {live, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink, say, pause, resume} from './ludolf';
 
 const Messages = new terminal.JsEditorMessages(MessagesData);
 
@@ -33,7 +33,21 @@ $(function () {
 
 function show() {
     $('#workspace').html(LudolfImg);
-    $('#ludolf_ludolf').show();
+    const ludolf = $('#ludolf_ludolf');
+    ludolf.show();
+
+    const marquee = $('<div id="marquee"><p></p></div>');
+    const term = $('#ludolf_terminal');
+
+    marquee.width(term.width());
+    marquee.height(term.height());
+
+    marquee.css('top', term.position().top - (term.height() / 10) + 'px');
+    marquee.css('left', term.position().left + 'px');
+
+    ludolf.after(marquee);
+    console.log('marquee added')
+
     pause();
     new TimelineMax().to('#ludolf_ludolf', 2, {opacity: 1})
 
@@ -45,4 +59,4 @@ function start() {
     resume();
 }
 
-export { show, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink };
+export { show, rightHandUp, rightHandDown, leftHandUp, leftHandDown, rightLegUp, rightLegDown, leftLegUp, leftLegDown, blink, say };

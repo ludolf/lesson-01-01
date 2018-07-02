@@ -1,3 +1,5 @@
+import $ from 'jquery-slim';
+
 const origWidth = 322;
 const origHeight = 372;
 
@@ -77,12 +79,14 @@ var buttonsSet = false;
 export const live = function () {
   clearTimeout(liveTimer);
 
-  ratio = document.getElementById('ludolf_ludolf').width.baseVal.value / origWidth;
+  const ludolf = $('#ludolf_ludolf');
+
+  ratio = ludolf.width() / origWidth;
 
   TweenMax.set('#ludolf_robot', {scaleY:ratio, scaleX:ratio});
 
   function eyelight() {
-    var repeat = Math.round(Math.random());
+    const repeat = Math.round(Math.random());
     new TimelineMax({repeat:repeat})
       .to('#ludolf_eyelight_left', 0.2, {rotation:20, transformOrigin: '0 100%'})
       .to('#ludolf_eyelight_left', 0.3, {rotation:0});
@@ -92,7 +96,7 @@ export const live = function () {
   }
 
   function eyebrow() {
-    var repeat = Math.round(Math.random() + 0.2);
+    const repeat = Math.round(Math.random() + 0.2);
     new TimelineMax({repeat:repeat})
       .to('#ludolf_eyebrow_right', 0.1, {y:0, x:-5*ratio, rotation:10, transformOrigin: '100% 0%'})
       .to('#ludolf_eyebrow_right', 0.3, {y:0, x:0, rotation:0});
@@ -167,11 +171,16 @@ export const live = function () {
   const motions = [body, eyelight, nose, eyebrow, eyebrow];
 
   (function _live() {
-      var next = Math.floor(Math.random() * motions.length);
+      const next = Math.floor(Math.random() * motions.length);
       motions[next]();
       liveTimer = setTimeout(_live, Math.floor((Math.random() * 3) + 2) * 1000);
   })();
   buttons();
+}
+
+export const say = function(text) {
+console.log('saying text', text)
+  $('#marquee p').html(text);
 }
 
 export const pause = function () {
